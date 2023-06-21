@@ -1,0 +1,49 @@
+package ojdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.*;
+
+public class vijj2 
+{
+	public static void main(String args[]){ 
+	try{  
+	//step1 load the driver class 
+		String query="update maggi Set age =19 where age=18";
+	Class.forName("oracle.jdbc.driver.OracleDriver");  
+	  
+	//step2 create  the connection object  
+	Connection con=DriverManager.getConnection(  
+	"jdbc:oracle:thin:@localhost:1521:xe","system","rvrjc1234");  
+	  
+	//step3 create the statement object  
+	Statement stmt=con.createStatement();  
+	System.out.println("testing..1..");
+	  
+	//step4 execute query  
+	int i=stmt.executeUpdate(query);
+	System.out.println("testing..1.." +i);
+	
+	//while(rs.next()) { 
+	//System.out.println("empid"+rs.getInt("empno"));
+		//System.out.println(rs.getString("name")+" "+rs.getInt("age")+" "+rs.getString("rollnum"));
+	//System.out.println(rs.getInt("empno")+"  "+rs.getString("ename")+"  "+rs.getString("job")+""+rs.getInt("mgr")+""+rs.getInt("sal")+""+rs.getInt("deptno"));  
+	//System.out.println("testing..11.."); 
+	//}
+	//rs.close();
+	//step5 close the connection object  
+	//con.close();  
+	
+	}
+	catch(Exception e){ 
+		e.printStackTrace();
+		System.out.println(e);}  
+	  
+	}  
+
+}
+
+output:
+testing..1..
+testing..1..6
