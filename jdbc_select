@@ -1,0 +1,47 @@
+// we use executeQuery(query) for select we get ResultSet ;
+package ojdbc;
+import java.sql.*;  
+public class vij1 {
+	public static void main(String args[]){ 
+		
+		String qry="select name,age,rollnum from maggi";
+		//select empno,ename,job,mgr,sal,deptno from emptest
+		try{  
+		//step1 load the driver class  
+		Class.forName("oracle.jdbc.driver.OracleDriver");  
+		  
+		//step2 create  the connection object  
+		Connection con=DriverManager.getConnection(  
+		"jdbc:oracle:thin:@localhost:1521:xe","system","rvrjc1234");  
+		  
+		//step3 create the statement object  
+		Statement stmt=con.createStatement();  
+		System.out.println("testing..1..");
+		  
+		//step4 execute query  
+ResultSet rs=stmt.executeQuery(qry);
+		
+		while(rs.next())  
+			//System.out.println("empid"+rs.getInt("empno"));
+		System.out.println(rs.getString("name")+""+rs.getInt("age")+""+rs.getString("rollnum"));  
+		System.out.println("testing..11.."); 
+		//rs.close();
+		//step5 close the connection object  
+		//con.close();  
+		  
+		}catch(Exception e){ 
+			e.printStackTrace();
+			System.out.println(e);}  
+		  
+		}  
+}
+
+
+output:
+testing..1..
+meghana18y20cs006
+vijaya18y20cs009
+vijaya18y20cs009
+srinidhi18y20csd60
+srinidhi18y20csd60
+testing..11..
